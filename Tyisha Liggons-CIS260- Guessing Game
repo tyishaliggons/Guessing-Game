@@ -1,0 +1,90 @@
+#Tyisha Liggons 
+#CIS260
+#Guessing Game
+
+
+import random 
+
+ 
+
+def play_game(limit): 
+
+    number_to_guess = random.randint(1, limit) 
+
+    print(f"I'm thinking of a number between 1 and {limit}.") 
+
+ 
+
+    guess = None 
+
+    attempts = 0 
+
+ 
+
+    while guess != number_to_guess: 
+
+        try: 
+
+            guess = int(input("Enter your guess: ")) 
+
+            attempts += 1 
+
+ 
+
+            if guess < number_to_guess: 
+
+                print("Too low, try again.") 
+
+            elif guess > number_to_guess: 
+
+                print("Too high, try again.") 
+
+            else: 
+
+                print(f"Congratulations! You guessed it in {attempts} tries!") 
+
+        except ValueError: 
+
+            print("Invalid input. Please enter a number.") 
+
+ 
+
+def main(): 
+
+    play_again = "y" 
+
+    while play_again.lower() == "y": 
+
+        try: 
+
+            limit = int(input("Enter the upper limit for the guessing game (greater than 1): ")) 
+
+            if limit <= 1: 
+
+                print("Please enter a number greater than 1.") 
+
+                continue 
+
+        except ValueError: 
+
+            print("Invalid input. Please enter a number.") 
+
+            continue 
+
+ 
+
+        play_game(limit) 
+
+ 
+
+        play_again = input("Do you want to play again? (y/n): ") 
+
+ 
+
+    print("Thanks for playing!") 
+
+ 
+
+if __name__ == "__main__": 
+
+    main() 
